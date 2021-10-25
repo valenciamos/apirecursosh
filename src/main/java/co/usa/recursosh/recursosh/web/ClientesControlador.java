@@ -15,30 +15,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.usa.recursosh.recursosh.model.Auditorio;
-import co.usa.recursosh.recursosh.service.AuditorioServicio;
+import co.usa.recursosh.recursosh.model.Clientes;
+import co.usa.recursosh.recursosh.service.ClientesServicio;
 
 @RestController
-@RequestMapping("/api/Auditorio")
+@RequestMapping("/api/Client")
 @CrossOrigin(origins="*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT})
-public class AuditorioControlador {
+
+public class ClientesControlador {
     @Autowired
-    private AuditorioServicio auditorioServicio;
+    private ClientesServicio clientesServicio;
 
     @GetMapping("/all")
-    public List<Auditorio>getAuditorios(){
-        return auditorioServicio.getAll();
+    public List<Clientes>getClientes(){
+        return clientesServicio.getAll();
     }
+
     @GetMapping("/{id}")
-    public Optional<Auditorio>getAuditorio(@PathVariable("id") int id){
-        return auditorioServicio.getAuditorio(id);        
+    public Optional<Clientes>getClientes(@PathVariable("id") int id){
+        return ((ClientesServicio) clientesServicio).getCliente(id);        
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Auditorio save(@RequestBody Auditorio aud){
-        return auditorioServicio.save(aud);
+    public Clientes save(@RequestBody Clientes cli){
+        return clientesServicio.save(cli);
     }
 
-
+    
 }
-

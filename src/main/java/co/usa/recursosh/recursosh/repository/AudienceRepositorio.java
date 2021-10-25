@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import co.usa.recursosh.recursosh.model.Audience;
 import co.usa.recursosh.recursosh.repository.crud.AudienceCrudRepositorio;
 
+
+
 @Repository
 public class AudienceRepositorio {
     @Autowired
@@ -25,8 +27,6 @@ public class AudienceRepositorio {
     public Audience save(Audience audience){
         return audienceCrudRepositorio.save(audience);
     }
-
-
         
 }
    
