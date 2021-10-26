@@ -25,10 +25,10 @@ public class CategoriaServicio {
     public Categoria save(Categoria cat){
         // verificar si el id es nulo
 
-        if (cat.getNumId()==null){
+        if (cat.getId()==null){
             return categoriaRepositorio.save(cat);
         }else{// verifico si existe o no el id en la base de datos
-            Optional<Categoria> consulta=categoriaRepositorio.getCategoria(cat.getNumId());
+            Optional<Categoria> consulta=categoriaRepositorio.getCategoria(cat.getId());
 
             if(consulta.isEmpty()){
                 return categoriaRepositorio.save(cat);

@@ -24,11 +24,11 @@ public class AudienceServicio {
     }
 
     public Audience save(Audience audience){
-        if (audience.getNumId()==null) {
+        if (audience.getId()==null) {
             return audienceRepositorio.save(audience);
 
         } else{
-            Optional<Audience> consulta=audienceRepositorio.getAudience(audience.getNumId());
+            Optional<Audience> consulta=audienceRepositorio.getAudience(audience.getId());
             if (consulta.isEmpty()) {
                 return audienceRepositorio.save(audience);
 

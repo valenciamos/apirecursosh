@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Categoria implements Serializable { 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer numId;
+    private Integer id;
     private String name;
     private String description;
 
@@ -22,12 +22,12 @@ public class Categoria implements Serializable {
     @JsonIgnoreProperties("category")
     private List<Audience> audiences;
 
-    public Integer getNumId() {
-        return numId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setNumId(Integer numId) {
-        this.numId = numId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -47,17 +47,13 @@ public class Categoria implements Serializable {
     }
 
     public List<Audience> getAudiences() {
-         return audiences;
+        return audiences;
     }
 
     public void setAudiences(List<Audience> audiences) {
-       this.audiences = audiences;
+        this.audiences = audiences;
     }
-    
 
-    
- }
-
-    
+}
 
    

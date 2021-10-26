@@ -17,7 +17,7 @@ import co.usa.recursosh.recursosh.model.Audience;
 import co.usa.recursosh.recursosh.service.AudienceServicio;
 
 @RestController
-@RequestMapping("/api/audience")
+@RequestMapping("/api/Audience")
 public class AudienceControlador {
     @Autowired
     private AudienceServicio audienceServicio;

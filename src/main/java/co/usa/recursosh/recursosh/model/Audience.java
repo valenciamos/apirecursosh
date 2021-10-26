@@ -1,6 +1,7 @@
 package co.usa.recursosh.recursosh.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.persistence.Table;
@@ -14,24 +15,31 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Audience implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer numId;
+    private Integer id;
     private String name;
     private String owner;
     private Integer capacity;
-    private Integer category_id;
     private String description;
 
     @ManyToOne
-    @JoinColumn(name= "category_id")
+    @JoinColumn(name= "categoryId")
     @JsonIgnoreProperties("audiences")
     private Categoria category;
 
-    public Integer getNumId() {
-        return numId;
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "audience")
+    @JsonIgnoreProperties({ "audience", "client" })
+    private List<Mensajes> messages; // relacion con mensajes
+
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "audience")
+    @JsonIgnoreProperties({ "audience", "client" })
+    private List<Reservas> reservations; // relacion con reservaciones
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setNumId(Integer numId) {
-        this.numId = numId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -58,14 +66,6 @@ public class Audience implements Serializable {
         this.capacity = capacity;
     }
 
-    public Integer getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -74,18 +74,31 @@ public class Audience implements Serializable {
         this.description = description;
     }
 
-   // public Categoria getCategory() {
-       // return category;
-   // }
+    public Categoria getCategory() {
+        return category;
+    }
 
-    //public void setCategory(Categoria category) {
-    //    this.category = category;
-  //  }
+    public void setCategory(Categoria category) {
+        this.category = category;
+    }
 
-     
-    
-    
-    
+    public List<Mensajes> getMessages() {
+        return messages;
+    }
 
+    public void setMessages(List<Mensajes> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservas> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservas> reservations) {
+        this.reservations = reservations;
+    }
+
+   
+    
         
 }
